@@ -1,13 +1,22 @@
 {-# LANGUAGE ForeignFunctionInterface, JavaScriptFFI, CPP #-}
 module Mithril where
 
+------------------------------------------------------------------------------
 import GHCJS.Types
 import GHCJS.DOM.Types
 import GHCJS.Foreign
 import Control.Concurrent.MVar
+------------------------------------------------------------------------------
 
-data Mithril
-data VirtualElement
+data Mithril_
+data VirtualElement_
+
+type Mithril = JSRef Mithril_
+type VirtualElement = JSRef VirtualElement_
+
+foreign import javascript unsafe "m.render($1,$2)" mRender :: Element -> VirtualElement -> IO ()
+foreign import javascript unsafe "m($1,$2)" m :: JSString -> JSString -> IO VirtualElement
+foreign import javascript unsafe "document.body" body :: IO Element
 
 -- m
   -- VirtualElement m(String selector [, Attributes attributes] [, Children... children])
