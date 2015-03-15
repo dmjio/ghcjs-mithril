@@ -1,0 +1,23 @@
+name:                mithril-ghcjs
+version:             0.1.0.0
+synopsis:            mithril.js bindings for ghcjs
+license:             MIT
+license-file:        LICENSE
+author:              David Johnson
+maintainer:          djohnson.m@gmail.com
+copyright:           David Johnson (c) 2015
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+description:         mithril.js bindings for ghcjs
+
+library
+  exposed-modules:     Mithril
+  js-sources:          mithril/mithril.js
+  hs-source-dirs:      src
+  ghcjs-options:       -O2
+  build-depends:       base >=4.7 && <4.8
+                     , data-default
+                     , ghcjs-base
+                     , ghcjs-dom
+  default-language:    Haskell2010
